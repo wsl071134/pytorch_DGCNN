@@ -7,7 +7,7 @@ test_number=${3-0}  # if specified, use the last test_number graphs as test data
 
 # general settings
 gm=DGCNN  # model
-gpu_or_cpu=gpu
+gpu_or_cpu=cpu
 GPU=0  # select the GPU number
 CONV_SIZE="32-32-32-1"
 sortpooling_k=0.6  # If k <= 1, then k is set to an integer so that k% of graphs have nodes less than this integer
@@ -72,7 +72,7 @@ if [ ${fold} == 0 ]; then
   start=`date +%s`
   for i in $(seq 1 10)
   do
-    CUDA_VISIBLE_DEVICES=${GPU} python main.py \
+    CUDA_VISIBLE_DEVICES=${GPU} python3.6 main.py \
         -seed 1 \
         -data $DATA \
         -fold $i \
@@ -95,7 +95,7 @@ if [ ${fold} == 0 ]; then
   echo "Average accuracy is"
   tail -10 acc_results.txt | awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }'
 else
-  CUDA_VISIBLE_DEVICES=${GPU} python main.py \
+  CUDA_VISIBLE_DEVICES=${GPU} python3.6 main.py \
       -seed 1 \
       -data $DATA \
       -fold $fold \

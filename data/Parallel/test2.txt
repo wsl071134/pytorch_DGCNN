@@ -1,0 +1,35 @@
+#nodes: 11
+#edges: 16
+
+Nodes (11)
+--------------------------------------------------------------------------------
+<%ID> = load <2 x float>, <2 x float>* <%ID>, align 1§0     
+<%ID> = bitcast i64* <%ID> to <2 x float>*§0                
+<%ID> = call <2 x float> <@ID>(<2 x float> <%ID>)§0         
+<%ID> = bitcast i64* <%ID> to <2 x float>*§1                
+<%ID> = fadd fast float <%ID>, <%ID>§1                      
+<%ID> = fadd fast float <%ID>, <%ID>§0                      
+<%ID> = extractelement <2 x float> <%ID>, <TYP> 1§0         
+<%ID> = extractelement <2 x float> <%ID>, <TYP> 0§0         
+define float <@ID>(i64* nocapture readonly <%ID>) local_unnamed_addr§1
+define float <@ID>(i64* nocapture readonly <%ID>) local_unnamed_addr§0
+ret float <%ID>§0                                           
+
+Edges (16)
+--------------------------------------------------------------------------------
+(<%ID> = load <2 x float>, <2 x float>, <%ID> = bitcast i64* <%ID> to <2 x fl) 2
+(<%ID> = load <2 x float>, <2 x float>, <%ID> = call <2 x float> <@ID>(<2 x f) 2
+(<%ID> = load <2 x float>, <2 x float>, <%ID> = bitcast i64* <%ID> to <2 x fl) 2
+(<%ID> = bitcast i64* <%ID> to <2 x fl, define float <@ID>(i64* nocapture rea) 2
+(<%ID> = bitcast i64* <%ID> to <2 x fl, define float <@ID>(i64* nocapture rea) 2
+(<%ID> = bitcast i64* <%ID> to <2 x fl, <%ID> = bitcast i64* <%ID> to <2 x fl) 2
+(<%ID> = call <2 x float> <@ID>(<2 x f, <%ID> = extractelement <2 x float> <%) 2
+(<%ID> = call <2 x float> <@ID>(<2 x f, <%ID> = extractelement <2 x float> <%) 2
+(<%ID> = bitcast i64* <%ID> to <2 x fl, define float <@ID>(i64* nocapture rea) 2
+(<%ID> = fadd fast float <%ID>, <%ID>§, <%ID> = fadd fast float <%ID>, <%ID>§) 2
+(<%ID> = fadd fast float <%ID>, <%ID>§, <%ID> = extractelement <2 x float> <%) 2
+(<%ID> = fadd fast float <%ID>, <%ID>§, <%ID> = extractelement <2 x float> <%) 2
+(<%ID> = extractelement <2 x float> <%, <%ID> = extractelement <2 x float> <%) 2
+(define float <@ID>(i64* nocapture rea, define float <@ID>(i64* nocapture rea) 2
+(ret float <%ID>§0                    , <%ID> = fadd fast float <%ID>, <%ID>§) 2
+(ret float <%ID>§0                    , <%ID> = fadd fast float <%ID>, <%ID>§) 2

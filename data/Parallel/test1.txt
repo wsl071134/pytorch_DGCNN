@@ -1,0 +1,35 @@
+#nodes: 11
+#edges: 16
+
+Nodes (11)
+--------------------------------------------------------------------------------
+<%ID> = fadd fast double <%ID>, <%ID>§0                     
+<%ID> = fadd fast double <%ID>, <%ID>§1                     
+<%ID> = extractelement <2 x double> <%ID>, <TYP> 0§0        
+<%ID> = bitcast i64* <%ID> to <2 x double>*§0               
+<%ID> = bitcast i64* <%ID> to <2 x double>*§1               
+<%ID> = extractelement <2 x double> <%ID>, <TYP> 1§0        
+<%ID> = call <2 x double> <@ID>(<2 x double> <%ID>)§0       
+<%ID> = load <2 x double>, <2 x double>* <%ID>, align 1§0   
+define double <@ID>(i64* nocapture readonly <%ID>) local_unnamed_addr§1
+define double <@ID>(i64* nocapture readonly <%ID>) local_unnamed_addr§0
+ret double <%ID>§0                                          
+
+Edges (16)
+--------------------------------------------------------------------------------
+(<%ID> = fadd fast double <%ID>, <%ID>, <%ID> = fadd fast double <%ID>, <%ID>) 2
+(<%ID> = fadd fast double <%ID>, <%ID>, <%ID> = extractelement <2 x double> <) 2
+(<%ID> = fadd fast double <%ID>, <%ID>, ret double <%ID>§0                   ) 2
+(<%ID> = fadd fast double <%ID>, <%ID>, <%ID> = extractelement <2 x double> <) 2
+(<%ID> = fadd fast double <%ID>, <%ID>, ret double <%ID>§0                   ) 2
+(<%ID> = extractelement <2 x double> <, <%ID> = extractelement <2 x double> <) 2
+(<%ID> = extractelement <2 x double> <, <%ID> = call <2 x double> <@ID>(<2 x ) 2
+(<%ID> = bitcast i64* <%ID> to <2 x do, <%ID> = bitcast i64* <%ID> to <2 x do) 2
+(<%ID> = bitcast i64* <%ID> to <2 x do, define double <@ID>(i64* nocapture re) 2
+(<%ID> = bitcast i64* <%ID> to <2 x do, <%ID> = load <2 x double>, <2 x doubl) 2
+(<%ID> = bitcast i64* <%ID> to <2 x do, <%ID> = load <2 x double>, <2 x doubl) 2
+(<%ID> = extractelement <2 x double> <, <%ID> = call <2 x double> <@ID>(<2 x ) 2
+(<%ID> = call <2 x double> <@ID>(<2 x , <%ID> = load <2 x double>, <2 x doubl) 2
+(define double <@ID>(i64* nocapture re, <%ID> = bitcast i64* <%ID> to <2 x do) 2
+(define double <@ID>(i64* nocapture re, define double <@ID>(i64* nocapture re) 2
+(define double <@ID>(i64* nocapture re, <%ID> = bitcast i64* <%ID> to <2 x do) 2

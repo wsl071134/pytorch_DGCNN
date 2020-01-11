@@ -88,9 +88,9 @@ def load_data():
 
     with open('data/%s/%s.txt' % (cmd_args.data, cmd_args.data), 'r') as f:
         n_g = int(f.readline().strip())
-        for i in range(n_g):
+        for i in range(n_g):# n_张图
             row = f.readline().strip().split()
-            n, l = [int(w) for w in row]
+            n, l = [int(w) for w in row]#节点数目，图类型
             if not l in label_dict:
                 mapped = len(label_dict)
                 label_dict[l] = mapped

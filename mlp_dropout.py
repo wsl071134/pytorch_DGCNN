@@ -61,7 +61,6 @@ class MLPClassifier(nn.Module):
 
         logits = self.h2_weights(h1)
         logits = F.log_softmax(logits, dim=1)
-
         if y is not None:
             y = Variable(y)
             loss = F.nll_loss(logits, y)
